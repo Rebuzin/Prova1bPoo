@@ -1,2 +1,258 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+package prova1b;
+
+import java.util.Scanner;
+
+public class Prova1b {
+	double Cost, newCost;
+	int discount, NumberInStock, i = 0;
+	String Stamp, color, id, storageMap;
+	
+	void operation() {
+		Scanner opt = new Scanner(System.in);
+		
+		System.out.println("Choose an operation, please: ");
+		System.out.println
+		(
+		  "[1] Verify Product Info \n" 
+		+ "[2] Change Product Info"
+		);
+		
+		int option = opt.nextInt();
+		if (option == 1) {i++; productInfo();}
+		if (option == 2) {selectProductInfoToChange();};
+	}
+
+	void selectProductInfoToChange() {
+		System.out.println("Select any product info to change: \n");
+		System.out.println(
+				"ID \n"
+				+ "Place in Deposit \n"
+				+ "Color \n"
+				+ "Cost \n"
+				+ "Stamp \n"
+				+ "Number in stock \n");
+		Scanner slcInf = new Scanner(System.in);
+		String infoToChange = slcInf.nextLine();
+		
+		switch (infoToChange) {
+			case "ID":
+				System.out.print("Write a new ID for the selected product: ");
+				Scanner newId = new Scanner(System.in);
+				id = newId.nextLine();
+				updatedProductInfo();
+				break;
+			case "Place in Deposit":
+				System.out.print("Write a new Place in Deposit for the selected product: ");
+				Scanner newStMap = new Scanner(System.in);
+				storageMap = newStMap.nextLine();
+				updatedProductInfo();
+				break;
+			case "Color":
+				System.out.print("Write a new Color for the selected product: ");
+				Scanner newColor = new Scanner(System.in);
+				color = newColor.nextLine();
+				updatedProductInfo();
+				break;
+			case "Cost":
+				System.out.print("Write a new Price for the selected product: ");
+				Scanner newCost = new Scanner(System.in);
+				Cost = newCost.nextDouble();
+				updatedProductInfo();
+				break;
+			case "Stamp":
+				System.out.print("Write a new Brand for the selected product: ");
+				Scanner newBrand = new Scanner(System.in);
+				Stamp = newBrand.nextLine();
+				updatedProductInfo();
+				break;
+			case "Quantity in Stock":
+				System.out.print("Write a new Quantity in Stock for the selected product: ");
+				Scanner newQuantity = new Scanner(System.in);
+				NumberInStock = newQuantity.nextInt();
+				updatedProductInfo();
+				break;
+		}
+		
+	}
+	
+	void productInfo() {
+		System.out.println("Product Info:");
+		System.out.println("ID: " + id);
+		System.out.println("Storage Map: " + storageMap);
+		System.out.println("Color: " + color);
+		System.out.println("Price: " + Cost);
+		System.out.println("Stamp: " + Stamp);
+		System.out.println("Quantity in stock: " + NumberInStock);
+		
+		if (i == 1) {
+		System.out.println("This product have discount? [Y/N]");
+		Scanner hd = new Scanner(System.in);
+		String haveDiscount = hd.nextLine();
+		switch (haveDiscount) {
+			case "Y":
+				i++;
+				System.out.println("How much discount?");
+				Scanner dv = new Scanner(System.in);
+				discount = dv.nextInt();
+				calculateDiscount();
+				updatedProductInfo();
+				break;
+			case "N":
+				i++;
+				break;
+		
+		}} else {
+		System.out.println("Would you like to do another operation? [Y/N]");
+		Scanner ans = new Scanner(System.in);
+		String answer = ans.next();
+		switch (answer) {
+			case "Y":
+				operation();
+				break;
+			case "N":
+				System.out.println("Thanks for using our services. Have a nice week :)");
+				break;
+		}
+		}
+	}
+	
+	void updatedProductInfo() {
+		productInfo();
+	}
+	
+	double calculateDiscount() {
+		newCost = Cost*discount/100;
+		Cost = Cost - newCost;
+		return Cost; 
+	}
+	
+	public static void main(String[] args) {
+		Prova1b WhiteMouse = new Prova1b();
+		Prova1b BlackMouse = new Prova1b();
+		Prova1b GreyMouse = new Prova1b();
+		
+		Prova1b WhiteKeyboard = new Prova1b();
+		Prova1b BlackKeyboard = new Prova1b();
+		Prova1b GreyKeyboard = new Prova1b();
+			
+		Prova1b WhiteHeadset = new Prova1b();
+		Prova1b BlackHeadset = new Prova1b();
+		Prova1b GreyHeadset = new Prova1b();
+		
+		//*******************************************MOUSE'S
+		WhiteMouse.id = "152SHE"; 
+		WhiteMouse.storageMap = "12SHE13WH";
+		WhiteMouse.color = "White";
+		WhiteMouse.Cost = 100;
+		WhiteMouse.Stamp = "HP";
+		WhiteMouse.NumberInStock = 150;
+		
+		BlackMouse.id = "153SHE"; 
+		BlackMouse.storageMap = "12SHE13BL";
+		BlackMouse.color = "Black";
+		BlackMouse.Cost = 250;
+		BlackMouse.Stamp = "Microsoft";
+		BlackMouse.NumberInStock = 150;
+		
+		GreyMouse.id = "154SHE"; 
+		GreyMouse.storageMap = "12SHE13GY";
+		GreyMouse.color = "Grey";
+		GreyMouse.Cost = 150;
+		GreyMouse.Stamp = "Multilaser";
+		GreyMouse.NumberInStock = 150;
+		
+		//*******************************************KEYBOARD'S
+		WhiteKeyboard.id = "152TSH"; 
+		WhiteKeyboard.storageMap = "12TSH13WH";
+		WhiteKeyboard.color = "White";
+		WhiteKeyboard.Cost = 270;
+		WhiteKeyboard.Stamp = "HP";
+		WhiteKeyboard.NumberInStock = 200;
+		
+		BlackKeyboard.id = "153TSH"; 
+		BlackKeyboard.storageMap = "12TSH13BL";
+		BlackKeyboard.color = "Black";
+		BlackKeyboard.Cost = 280;
+		BlackKeyboard.Stamp = "Microsoft";
+		BlackKeyboard.NumberInStock = 190;
+		
+		GreyKeyboard.id = "154TSH"; 
+		GreyKeyboard.storageMap = "12TSH13GY";
+		GreyKeyboard.color = "Grey";
+		GreyKeyboard.Cost = 200;
+		GreyKeyboard.Stamp = "Multilaser";
+		GreyKeyboard.NumberInStock = 250;
+		
+		//*******************************************HEADSET'S
+		WhiteHeadset.id = "152ST"; 
+		WhiteHeadset.storageMap = "12ST13WH";
+		WhiteHeadset.color = "White";
+		WhiteHeadset.Cost = 700;
+		WhiteHeadset.Stamp = "HP";
+		WhiteHeadset.NumberInStock = 30;
+		
+		BlackHeadset.id = "153ST"; 
+		BlackHeadset.storageMap = "12ST13BL";
+		BlackHeadset.color = "Black";
+		BlackHeadset.Cost = 800;
+		BlackHeadset.Stamp = "Microsoft";
+		BlackHeadset.NumberInStock = 60;
+		
+		GreyHeadset.id = "154ST"; 
+		GreyHeadset.storageMap = "12ST13GY";
+		GreyHeadset.color = "Grey";
+		GreyHeadset.Cost = 400;
+		GreyHeadset.Stamp = "Multilaser";
+		GreyHeadset.NumberInStock = 50;
+		
+		//CALL OPERATION
+		System.out.println("Choose a product to do an operation, please: ");
+		System.out.println(
+				"Avaiable Products: \n"
+				+ "White Mouse's \n"
+				+ "Black Mouse's \n"
+				+ "Grey Mouse's \n"
+				+ "\n"
+				+ "White Keyboard's \n"
+				+ "Black Keyboard's \n"
+				+ "Grey Keyboard's \n"
+				+ "\n"
+				+ "White Headset's \n"
+				+ "Black Headset's \n"
+				+ "Grey Headset's \n"
+				);
+		
+		Scanner productOpt = new Scanner(System.in);
+		String selectProduct = productOpt.nextLine();
+		
+		switch (selectProduct) {
+			case "White Mouse's":
+				WhiteMouse.operation();
+				break;
+			case "Black Mouse's":
+				BlackMouse.operation();
+				break;
+			case "Grey Mouse's":
+				GreyMouse.operation();
+				break;
+			case "White Keyboard's":
+				WhiteKeyboard.operation();
+				break;
+			case "Black Keyboard's":
+				BlackKeyboard.operation();
+				break;
+			case "Grey Keyboard's":
+				GreyKeyboard.operation();
+				break;
+			case "White Headset's":
+				WhiteHeadset.operation();
+				break;
+			case "Black Headset's":
+				BlackHeadset.operation();
+				break;
+			case "Grey Headset's":
+				GreyHeadset.operation();
+				break;
+		}
+	}
+}
